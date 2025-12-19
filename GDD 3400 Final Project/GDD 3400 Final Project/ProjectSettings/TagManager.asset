@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Enemy
   - Projectile
+  - Hurt
+  - Snitch
   layers:
   - Default
   - TransparentFX

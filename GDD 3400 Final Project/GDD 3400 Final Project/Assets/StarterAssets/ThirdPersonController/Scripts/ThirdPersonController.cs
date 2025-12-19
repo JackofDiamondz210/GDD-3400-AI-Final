@@ -21,6 +21,12 @@ namespace StarterAssets
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
 
+        [Header("Sprint Sound Settings")]
+        [SerializeField] float sprintLoudness = 6f; //how loud sprinting is
+        [SerializeField] float sprintEmitInterval = 0.5f; //how often sound is emitted while sprinting
+        private float sprintEmitTimer = 0f;
+
+
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
@@ -277,6 +283,28 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
+
+            //create sound when sprinting
+            if (_input.sprint && _input.move.magnitude > 0.1f)
+            {
+                sprintEmitTimer -= Time.deltaTime;
+                if (sprintEmitTimer <= 0f)
+                {
+                    sprintEmitTimer = sprintEmitInterval;
+
+                    if (SoundManager.Instance != null)
+                    {
+                        SoundManager.Instance.EmitSound(transform.position, sprintLoudness);
+                        Debug.Log("Sprint sound emitted!");
+                    }
+                }
+            }
+            else
+            {
+                //reset timer when not sprinting
+                sprintEmitTimer = 0f;
+            }
+
         }
 
         private void JumpAndGravity()

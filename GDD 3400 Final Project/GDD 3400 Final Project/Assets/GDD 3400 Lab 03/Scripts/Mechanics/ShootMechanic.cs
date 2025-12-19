@@ -13,6 +13,10 @@ public class ShootMechanic : MonoBehaviour
     [Header("Projectile Settings")]
     [SerializeField] Projectile _ProjectilePrefab; // This is the projectile prefab that will be spawned
 
+    [Header("Sound Settings")]
+    [SerializeField] float shootLoudness = 10f; //loudness value of bullets
+
+
     // This gets and sets the aim target point in the world, necessary to keep updated
     private Vector3 _aimTargetPoint = Vector3.zero;
     public Vector3 AimTargetPoint
@@ -88,5 +92,8 @@ public class ShootMechanic : MonoBehaviour
         // Spawn the projectile at the shoot point and initialize it with the shooting direction and parent tag
         Projectile projectile = Instantiate(_ProjectilePrefab, _ShootPoint.position, Quaternion.identity).GetComponent<Projectile>();
         projectile.InitializeProjectile(_aimTargetPoint - _ShootPoint.position, this.gameObject.tag);
+
+        //having bullets emit sound
+        SoundManager.Instance.EmitSound(_ShootPoint.position, shootLoudness);
     }
 }
