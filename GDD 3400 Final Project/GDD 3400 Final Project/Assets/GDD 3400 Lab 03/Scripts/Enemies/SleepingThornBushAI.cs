@@ -21,6 +21,7 @@ public class SleepingThornBushAI : MonoBehaviour
 
     Coroutine routine;
 
+    //getting all children of the bush for their scale size
     private void Awake()
     {
         if (visual == null)
@@ -56,6 +57,7 @@ public class SleepingThornBushAI : MonoBehaviour
         }
     }
 
+    //When in distance of hearing a sound begin growth
     void OnSoundHeard(SoundEvent sound)
     {
         float distance = Vector3.Distance(transform.position, sound.position);
@@ -70,7 +72,7 @@ public class SleepingThornBushAI : MonoBehaviour
             routine = StartCoroutine(GrowThenSleep());
         }
     }
-
+    //growth logic using awakeScale and asleppScale
     IEnumerator GrowThenSleep()
     {
         while (Vector3.Distance(visual.localScale, awakeScale) > 0.01f)

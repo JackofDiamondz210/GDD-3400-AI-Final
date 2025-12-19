@@ -19,6 +19,7 @@ public class ScaredyDoorAI : MonoBehaviour
     bool isOpen = false;
     Coroutine doorRoutine;
 
+    //setting positions for open and close
     private void Awake()
     {
         closedPosition = transform.position;
@@ -45,6 +46,7 @@ public class ScaredyDoorAI : MonoBehaviour
             SoundManager.Instance.OnSoundEmitted -= OnSoundHeard;
     }
 
+    //start opening the door when sound is loud enough
     void OnSoundHeard(SoundEvent sound)
     {
         if (isOpen) return;

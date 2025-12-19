@@ -24,6 +24,7 @@ public class SnitchAI : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioSource alarmSource;
 
+    //patrol info
     private NavMeshAgent agent;
     private int currentWaypointIndex = 0;
     private bool isAlerted = false;
@@ -78,6 +79,7 @@ public class SnitchAI : MonoBehaviour
         }
     }
 
+    //once triggered change bools and sound alarm
     private void TriggerAlert()
     {
         isAlerted = true;

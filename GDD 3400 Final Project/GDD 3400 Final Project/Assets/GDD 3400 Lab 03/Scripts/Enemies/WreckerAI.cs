@@ -43,7 +43,7 @@ public class WreckerAI : MonoBehaviour
         PickNewWanderTarget();
     }
 
-    //making sure SoundManager works because for some reason my enemies wouldnt react to sound
+    //making sure SoundManager still works even after resetting scene
     private void OnEnable()
     {
         StartCoroutine(SubscribeWhenReady());
@@ -67,6 +67,7 @@ public class WreckerAI : MonoBehaviour
         }
     }
 
+    //wandering vs chasing logic
     private void Update()
     {
         //continue to wander when chasing is over
@@ -152,6 +153,7 @@ public class WreckerAI : MonoBehaviour
         growRoutine = StartCoroutine(GrowAndShrink());
     }
 
+    //growing and shrinking wrecker
     private IEnumerator GrowAndShrink()
     {
         //stopping movement

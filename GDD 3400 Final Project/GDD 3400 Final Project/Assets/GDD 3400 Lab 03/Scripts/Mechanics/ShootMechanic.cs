@@ -93,7 +93,7 @@ public class ShootMechanic : MonoBehaviour
         Projectile projectile = Instantiate(_ProjectilePrefab, _ShootPoint.position, Quaternion.identity).GetComponent<Projectile>();
         projectile.InitializeProjectile(_aimTargetPoint - _ShootPoint.position, this.gameObject.tag);
 
-        //having bullets emit sound
+        //added this so bullets make sound 
         SoundManager.Instance.EmitSound(_ShootPoint.position, shootLoudness);
     }
 }

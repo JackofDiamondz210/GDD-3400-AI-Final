@@ -21,8 +21,9 @@ namespace StarterAssets
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
 
+        //adding sound settings to sprinting
         [Header("Sprint Sound Settings")]
-        [SerializeField] float sprintLoudness = 6f; //how loud sprinting is
+        [SerializeField] float sprintLoudness = 6f; //how loud sprinting is to only activate plants
         [SerializeField] float sprintEmitInterval = 0.5f; //how often sound is emitted while sprinting
         private float sprintEmitTimer = 0f;
 
